@@ -8,14 +8,16 @@ import {
   Droplet,
   Beaker,
   Menu,
-  X
+  X,
+  FileText,
 } from 'lucide-react';
 import ClientesManager from '../components/ClientesManager';
 import MaquinasManager from '../components/MaquinasManager';
+import RelatoriosManager from '../components/RelatoriosManager';
 import TintasManager from '../components/TintasManager';
 import SolventesManager from '../components/SolventesManager';
 
-type Tab = 'clientes' | 'maquinas' | 'tintas' | 'solventes';
+type Tab = 'clientes' | 'maquinas' | 'relatorios' | 'tintas' | 'solventes';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('clientes');
@@ -25,6 +27,7 @@ export default function Dashboard() {
   const menuItems = [
     { id: 'clientes' as Tab, label: 'Clientes', icon: Users, color: 'blue' },
     { id: 'maquinas' as Tab, label: 'Máquinas', icon: Cog, color: 'orange' },
+    { id: 'relatorios' as Tab, label: 'Relatórios', icon: FileText, color: 'green' },
     { id: 'tintas' as Tab, label: 'Tintas', icon: Droplet, color: 'purple' },
     { id: 'solventes' as Tab, label: 'Solventes', icon: Beaker, color: 'teal' },
   ];
@@ -113,6 +116,7 @@ export default function Dashboard() {
         <main className="p-4 sm:p-6 lg:p-8">
           {activeTab === 'clientes' && <ClientesManager />}
           {activeTab === 'maquinas' && <MaquinasManager />}
+          {activeTab === 'relatorios' && <RelatoriosManager />}
           {activeTab === 'tintas' && <TintasManager />}
           {activeTab === 'solventes' && <SolventesManager />}
         </main>
